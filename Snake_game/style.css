@@ -13,8 +13,8 @@ html,body{
 :root{
     /* Background_Color */
     --bg-primary-color: #212121ff;
-    --bg-fill-color: #9c0707ff;
-    --bg-food-color: #d2d237ff;
+    --bg-fill-color: #f55b5bff;
+    --bg-food-color: #dada8dff;
     /* Text Color */
     --text-primary-color: #e5e2e2ff;
 
@@ -29,7 +29,7 @@ html,body{
     --space-3xl:48px;
 
     /* //border colors */
-    --border-primary-color: #c4c0c0ff;
+    --border-primary-color: #c4c0c041;
 /* 
     //border-radius:  */
     --border-radius-xs: 4px;
@@ -52,6 +52,18 @@ main,section{
     width:100%;
     height:100%;
 
+}
+
+.btn{
+    padding:var(--space-sm) var(--space-md);
+    border:none;
+    border-radius:var(--border-radius-sm);
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+.btn:hover{
+transform:scale(1.1);
 }
 
 section{
@@ -85,7 +97,8 @@ section .infos{
 .block{
     /* width:30px;
     height:30px; */
-    border:1px solid var(--border-primary-color);
+    border:0.5px solid var(--bg-primary-color);
+    border-radius:50%;
    
 }
 
@@ -94,4 +107,28 @@ section .infos{
 }
 .food{
     background-color: var(--bg-food-color);
+}
+
+.modal{
+    height:100vh;
+    width:100%;
+    position:fixed;
+    top:0;
+    background-color: #65646470;
+    backdrop-filter:blur(4px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal .start-game,
+.modal .game-over {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:var(--space-lg);
+}
+
+.modal .game-over{
+    display:none;
 }

@@ -1,0 +1,146 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family:gilroy;
+}
+
+html,body{
+    height:100%;
+    width:100%;
+}
+
+:root{
+    --background-color: #000000ff;
+    --bg-button-color: #f77205;
+    --bg-task-color: #1f1e1eff;
+    --primary-text-color: #e0dedeff;
+
+    /* padding variables */
+    --nav-padding:15px 30px;
+    --section-padding:15px 30px;
+    --padding-s:5px;
+    --padding-m: 10px;
+    --padding-l: 15px;
+    --padding-xl: 20px;
+    --padding-xxl: 30px;
+
+
+/* border radius variables */
+    --border-radius-s:5px;
+    --border-radius-m:10px;
+    --border-radius-l:15px;
+    --border-radius-xl:20px;
+    --border-radius-xxl:30px;
+    
+/*  */
+
+
+
+}
+
+body{
+    background-color: var(--background-color);
+    color:var(--primary-text-color);
+}
+
+main{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+.nav{
+    /* height:100%;
+    width:100%; */
+    /* background-color:red; */
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: var(--nav-padding);
+}
+
+.logo{
+    /* margin:48px; */
+    font-weight:500;
+    font-size:30px;
+    color:white;
+}
+
+/* .right {
+    margin:48px;
+} */
+.right button{
+    padding:var(--padding-m) var(--padding-l);
+    border-radius:var(--border-radius-m);
+    background: var(--bg-button-color);
+    cursor:pointer;
+    transition:  0.3s ease;
+    color:var(--primary-text-color);
+    font-size:25px;
+    border:none;
+}
+.right button:hover{
+    transform:scale(1.1);
+}
+
+section{
+    padding: var(--section-padding);
+    display:flex;
+    flex-grow:1;  
+    justify-content:space-between;
+    gap:var(--padding-xxl);
+
+}
+
+section .task-column{
+    background-color: #373737ff;
+    border-radius:var(--border-radius-m);
+    flex-grow:1;
+    padding:var(--padding-l);
+    display:flex;
+    flex-direction:column;
+    gap:var(--padding-m);
+    transition: all 0.7s cubic-bezier(0.19,1,0.22,1);
+}
+
+section .task-column.hover-over{
+    border:2px dashed var(--primary-text-color);
+    scale:1.05;
+}
+
+section .task-column .heading{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-weight:300;
+    font-size:24px;
+}
+
+section .task-column .task{
+
+    background-color:var(--bg-task-color);
+    padding:var(--padding-m);
+    border-radius: var(--border-radius-m);
+    display:flex;
+    flex-direction:column;
+    gap:var(--padding-s);
+    cursor:grab;
+}
+
+section .task-column .task button{
+    align-self:flex-end;
+    padding:var(--padding-s) var(--padding-m);
+    background-color:var(--bg-button-color);
+    border-radius:var(--border-radius-s);
+    /* height:38px;
+    width:50px; */
+    cursor : pointer;
+    transition:all transform 0.3 ease;
+    border:none;
+    color: var(--primary-text-color);
+}
+
+section .task-column .task button:hover{
+    transform:scale(1.1);
+}
