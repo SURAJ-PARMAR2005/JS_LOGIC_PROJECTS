@@ -3,7 +3,10 @@ const progress = document.querySelector("#Progress");
 const done = document.querySelector("#done");
 
 const tasks = document.querySelectorAll(".task");
-
+const toggelModal = document.querySelector("#toggel-modal")
+const modal = document.querySelector(".modal");
+const bgModal = document.querySelector(".bg");
+const addTaskButton = document.querySelector(".add-task-button");
 let dragElement = null;
 
 
@@ -66,3 +69,33 @@ addDragEventsOnColumn(progress);
 addDragEventsOnColumn(done);
 addDragEventsOnColumn(todo);
 
+
+//now i want to make the add new Task Button functional
+
+toggelModal.addEventListener("click",(e)=> {
+    e.preventDefault();
+    modal.classList.toggle("active");
+})
+
+bgModal.addEventListener("click",()=> {
+    modal.classList.remove("active");
+});
+
+
+addTaskButton.addEventListener("click",() => {
+    const taskTitle = document.querySelector("#task-title-input").value;
+    const taskDesc = document.querySelector("#task-description-input").value;
+
+    const div = document.createElement("div");
+    div.classList.add("task");
+    div.setAttribute("draggable","true")
+
+    div.innerHTML = `
+    <h2>${taskTitle} </h2>
+    <p>${taskDesc}</p>
+    <button>Delete</button>
+    `
+    todo.appendChild(div);
+
+    modal.classList.remove("active");
+})
