@@ -13,12 +13,12 @@ let dragElement = null;
 
 function addTaskEle(title,desc,column){
     const div = document.createElement("div");
-    div.classList.add(".task");
+    div.classList.add("task");
     div.setAttribute("draggable",true);
     
      div.innerHTML = `
-        <h2> ${task.title} </h2>
-        <p>${task.desc}</P>
+        <h2> ${title} </h2>
+        <p>${desc}</P>
         <button>Delete</button>
         `;
     column.appendChild(div);
