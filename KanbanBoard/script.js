@@ -24,12 +24,33 @@ function addTaskEle(title,desc,column){
     column.appendChild(div);
     div.addEventListener("drag",(e) => {
         dragElement = div;
+    })
+
+    const deleteButton = div.querySelector("button");
+    deleteButton.addEventListener("click",() => {
+      div.remove();
+                [todo, progress, done].forEach((col) => {
+      const tasks = col.querySelectorAll(".task");
+      const count = col.querySelector(".right");
+
+      tasksData[col.id] = Array.from(tasks).map((t) => {
+        return {
+          title: t.querySelector("h2").innerText,
+          desc: t.querySelector("p").innerText,
+        };
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasksData));
+      count.innerText = tasks.length;
+    });
+    
 
     })
 
     return div;
 
 }
+
+
 
 
 
@@ -74,6 +95,7 @@ function addDragEventsOnColumn(column) {
     //    console.log("dropped",dragElement,column);
     column.appendChild(dragElement);
     column.classList.remove("hover-over");
+  
 
     [todo, progress, done].forEach((col) => {
       const tasks = col.querySelectorAll(".task");
@@ -88,8 +110,9 @@ function addDragEventsOnColumn(column) {
       localStorage.setItem("tasks", JSON.stringify(tasksData));
       count.innerText = tasks.length;
     });
-  });
+    });
 }
+
 
 addDragEventsOnColumn(progress);
 addDragEventsOnColumn(done);
@@ -111,29 +134,22 @@ addTaskButton.addEventListener("click", () => {
   const taskDesc = document.querySelector("#task-description-input").value;
     addTaskEle(taskTitle,taskDesc,todo);
 
-  [todo, progress, done].forEach((col) => {
-    const tasks = col.querySelectorAll(".task");
-    const count = col.querySelector(".right");
 
-    tasksData[col.id] = Array.from(tasks).map((t) => {
-      return {
-        title: t.querySelector("h2").innerText,
-        desc: t.querySelector("p").innerText,
-      };
+    [todo, progress, done].forEach((col) => {
+      const tasks = col.querySelectorAll(".task");
+      const count = col.querySelector(".right");
+
+      tasksData[col.id] = Array.from(tasks).map((t) => {
+        return {
+          title: t.querySelector("h2").innerText,
+          desc: t.querySelector("p").innerText,
+        };
+      });
+      localStorage.setItem("tasks", JSON.stringify(tasksData));
+      count.innerText = tasks.length;
     });
-    localStorage.setItem("tasks", JSON.stringify(tasksData));
-    count.innerText = tasks.length;
-  });
-
-  div.addEventListener("drag", (e) => {
-    dragElement = div;
-  });
+  
 
   modal.classList.remove("active");
 });
 
-const removeTask = document.querySelector(".task button");
-
-removeTask.addEventListener("click", (e) => {
-  console.log(e);
-});

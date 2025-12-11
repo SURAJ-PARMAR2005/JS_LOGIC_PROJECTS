@@ -96,6 +96,7 @@ section .task-column{
     background-color: #373737ff;
     border-radius:var(--border-radius-m);
     flex-grow:1;
+    width:100%;
     padding:var(--padding-l);
     display:flex;
     flex-direction:column;
